@@ -1,0 +1,29 @@
+:root {
+  /* Superfícies — claro primeiro */
+  --bg: var(--color-paper);
+  --bg-alt: var(--color-ice);
+  --bg-navy: var(--color-navy);
+  --fg: var(--color-ink);
+  --fg-muted: var(--color-steel);
+  --fg-on-navy: var(--color-paper);
+  --fg-on-navy-muted: rgba(255,255,255,.7);
+
+  /* Acento único */
+  --accent: var(--color-royal);
+  --accent-m: var(--color-royal-m);
+  --accent-mint: var(--color-mint);
+  --accent-wa: var(--color-green-wa);
+
+  /* Traço */
+  --line: var(--color-line);
+  --line-navy: rgba(255,255,255,.12);
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 140ms;
+  --dur-base: 220ms;
+  --dur-slow: 340ms;
+
+  /* BRAND.md: fundo claro primeiro. Navy é bloco, não tema — sem dark total. */
+  color-scheme: light;
+}

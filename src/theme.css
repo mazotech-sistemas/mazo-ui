@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Cores BRAND.md (exatas) */
+  --color-navy: #021D44;
+  --color-royal: #0052FA;
+  --color-royal-m: #0E5DFC;
+  --color-steel: #4573A7;
+  --color-ice: #EDEDED;
+  --color-mint: #00DEB2;
+  --color-paper: #FFFFFF;
+  --color-ink: #052049;
+  --color-label: #1C355E;
+  --color-line: rgba(2,29,68,.14);
+  --color-green-wa: #25d366;
+
+  /* Tipografia */
+  --font-display: var(--font-inter);
+  --font-body: var(--font-inter);
+  --font-mono: var(--font-jet);
+
+  /* Radius */
+  --radius-card: 20px;
+  --radius-pill: 9999px;
+  --radius-input: 12px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 140ms;
+  --dur-base: 220ms;
+  --dur-slow: 340ms;
+}

@@ -13,7 +13,11 @@
   "scripts": {
     "build": "tsup",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "test:unit": "vitest run",
+    "test:bdd": "cucumber-js -p default",
+    "test:e2e": "playwright test",
+    "test:system": "vitest run tests/system"
   },
   "peerDependencies": { "react": "19", "react-dom": "19" },
   "dependencies": {
@@ -32,6 +36,11 @@
     "react-dom": "19.2.8",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "tailwindcss": "^4"
+    "tailwindcss": "^4",
+    "@cucumber/cucumber": "^11.0.0",
+    "@cucumber/pretty-formatter": "^1.0.0",
+    "@playwright/test": "^1.65.0",
+    "playwright": "^1.65.0",
+    "@testing-library/user-event": "^14.6.7"
   }
 }

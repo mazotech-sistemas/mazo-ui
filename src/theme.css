@@ -14,6 +14,14 @@
   --color-line: rgba(2,29,68,.14);
   --color-green-wa: #25d366;
 
+  /* status (nao sao cores de marca do BRAND) */
+  --color-ok: var(--color-mint);     /* = mint, status ok/pago */
+  --color-go: #15803D;               /* verde, ativo/aberto */
+  --color-alert: #B45309;            /* ambar, atencao/pendente */
+  --color-danger: #BE123C;           /* vermelho, erro/fechado/atrasado */
+  --color-info: var(--color-royal);  /* = royal, informativo */
+  --color-neutral: var(--color-steel); /* = steel, rascunho/inativo */
+
   /* Tipografia */
   --font-display: var(--font-inter);
   --font-body: var(--font-inter);

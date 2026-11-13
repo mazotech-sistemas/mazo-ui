@@ -7,9 +7,9 @@
  * shadcn (mazo-nexus, mazo-fit) migram trocando o preset, sem reescrever
  * componente.
  *
- * O vermelho de status nao existe na paleta BRAND crua (theme.css so tem
- * royal, mint e verde do WhatsApp), entao o preset define `--color-danger`
- * aqui, no mesmo :root onde injeta o remap, e aponta `--destructive` para ele.
+ * O preset so REFERENCIA os tokens `--color-*` de theme.css; nao inventa cor.
+ * `--destructive` aponta para `--color-danger`, da familia de status declarada
+ * no `@theme inline` de theme.css.
  */
 
 /**
@@ -39,15 +39,6 @@ export const shadcnVars: Record<string, string> = {
   "--radius": "20px",
 };
 
-/**
- * Vermelho de status do BRAND. Fica no preset porque theme.css nao declara um
- * `--color-*` vermelho; mant-lo aqui garante que `var(--color-danger)` do remap
- * resolve para uma cor real.
- */
-const statusVars: Record<string, string> = {
-  "--color-danger": "#E5484D",
-};
-
 function toCssBlock(vars: Record<string, string>): string {
   return Object.entries(vars)
     .map(([k, v]) => `    ${k}: ${v};`)
@@ -55,12 +46,11 @@ function toCssBlock(vars: Record<string, string>): string {
 }
 
 /**
- * CSS que o preset injeta: declara o vermelho de status e aplica o remap das
- * vars shadcn em :root.
+ * CSS que o preset injeta: aplica o remap das vars shadcn em :root. As cores
+ * saem dos `--color-*` de theme.css; o preset nao declara hex proprio.
  */
 export const baseLayer = `@layer base {
   :root {
-${toCssBlock(statusVars)}
 ${toCssBlock(shadcnVars)}
   }
 }

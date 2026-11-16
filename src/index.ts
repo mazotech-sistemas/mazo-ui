@@ -24,3 +24,5 @@ export { Select } from "./components/Select";
 export type { SelectProps } from "./components/Select";
 export { Table } from "./components/Table";
 export type { TableProps } from "./components/Table";
+export { FONT_VARS } from "./fonts";
+export type { FontVars } from "./fonts";

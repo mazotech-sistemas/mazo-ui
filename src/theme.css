@@ -14,8 +14,8 @@
 
   /* status (nao sao cores de marca do BRAND) */
   --color-ok: var(--color-mint);     /* = mint, status ok/pago */
-  --color-go: #15803D;               /* verde, ativo/aberto */
-  --color-alert: #B45309;            /* ambar, atencao/pendente */
+  --color-go: #166534;               /* verde, ativo/aberto (AA sobre o fundo claro) */
+  --color-alert: #92400E;            /* ambar, atencao/pendente (AA sobre o fundo claro) */
   --color-danger: #BE123C;           /* vermelho, erro/fechado/atrasado */
   --color-info: var(--color-royal);  /* = royal, informativo */
   --color-neutral: var(--color-steel); /* = steel, rascunho/inativo */

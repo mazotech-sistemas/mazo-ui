@@ -20,11 +20,11 @@ export interface BadgeProps {
  * mesmo tom), padrao mazo-missoes. Pill arredondado por default.
  */
 const TONE_CLASS: Record<BadgeTone, string> = {
-  ok: "bg-mint/15 text-ok",
+  ok: "bg-mint/25 text-ink",
   go: "bg-go/15 text-go",
   warn: "bg-alert/15 text-alert",
   danger: "bg-danger/15 text-danger",
-  neutral: "bg-ice text-steel",
+  neutral: "bg-ice text-label",
   info: "bg-royal/15 text-info",
 };
 

@@ -19,7 +19,7 @@ describe("Badge com tone fora da uniao", () => {
     );
     const cls = (container.firstChild as HTMLElement).className;
     expect(cls).toMatch(/bg-ice/);
-    expect(cls).toMatch(/text-steel/);
+    expect(cls).toMatch(/text-label/);
     expect(cls).toMatch(/rounded-full/);
   });
 });

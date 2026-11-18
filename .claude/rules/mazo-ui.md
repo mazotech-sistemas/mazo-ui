@@ -39,7 +39,7 @@ Todo CSS novo precisa de uma linha em `tsup.config.ts` (cópia para `dist/`) e u
 ## Publicar
 
 1. Suíte inteira verde.
-2. `npm audit --omit=dev` com 0 vulnerabilidades (é o que chega ao consumidor). O audit completo acusa tsup, vitest e vite em devDependencies; a correção pede vitest 5, então vira tarefa à parte.
+2. `npm audit --omit=dev` com 0 vulnerabilidades (é o que chega ao consumidor). O audit completo ainda acusa 7 altas em tsup, vite e vitest, todas pelo `picomatch@4.0.7` (ReDoS, advisory GHSA-fc5q-39xc-vjpf), que é a última versão publicada e não tem correção. O `mazo-site` carrega o mesmo vite. Reavalie quando sair `picomatch` novo.
 3. Commit pt-BR, uma linha, imperativo, sem prefixo, sem emoji, sem atribuição de IA.
 4. Push no repositório mazo-ui.
 5. Só depois, no hub: bump do ponteiro de `libs/mazo-ui`, `docs/products/mazo-ui.md` e linha em `docs/HANDOFF.md`.

@@ -20,7 +20,7 @@
     "outDir": "dist",
     "types": [
       "node",
-      "@testing-library/jest-dom",
+      "@testing-library/jest-dom/vitest",
       "vitest/globals"
     ]
   },

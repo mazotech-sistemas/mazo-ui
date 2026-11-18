@@ -39,11 +39,10 @@
     "tailwind-merge": "^2.5.4"
   },
   "devDependencies": {
-    "@cucumber/cucumber": "^11.0.0",
-    "@cucumber/pretty-formatter": "^1.0.0",
+    "@cucumber/cucumber": "^13.3.0",
     "@playwright/test": "^1.65.0",
     "@tailwindcss/postcss": "^4.3.5",
-    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.0.1",
     "@testing-library/user-event": "^14.6.7",
     "@types/node": "^22.20.5",
@@ -55,8 +54,9 @@
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "tailwindcss": "^4",
-    "tsup": "^8.3.5",
+    "tsup": "^9.0.0",
     "typescript": "^5.6.3",
-    "vitest": "^2.1.5"
+    "vite": "^8.3.8",
+    "vitest": "^5.1.1"
   }
 }

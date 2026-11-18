@@ -12,3 +12,11 @@ describe("Logo", () => {
     expect(container.querySelector("svg")).toBeTruthy();
   });
 });
+
+describe("Logo com nome vazio", () => {
+  it("ainda renderiza o simbolo, a marca nunca some", () => {
+    const { container } = render(<Logo nome="" />);
+    expect(container.querySelector("svg")).toBeTruthy();
+    expect(container.querySelector("svg")).toHaveAttribute("aria-label", "Mazotech");
+  });
+});

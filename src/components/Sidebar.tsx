@@ -4,7 +4,7 @@ import { cn } from "../lib/cn";
 export interface NavItem {
   href: string;
   label: string;
-  icon: ReactNode;
+  icon?: ReactNode;
 }
 
 export interface NavSection {

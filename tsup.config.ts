@@ -12,5 +12,8 @@ export default defineConfig({
   onSuccess: async () => {
     copyFileSync("src/tokens.css", "dist/tokens.css");
     copyFileSync("src/theme.css", "dist/theme.css");
+    copyFileSync("src/shadcn.css", "dist/shadcn.css");
+    copyFileSync("src/fonts.css", "dist/fonts.css");
+    copyFileSync("src/styles.css", "dist/styles.css");
   },
 });

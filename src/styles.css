@@ -1,0 +1,13 @@
+/*
+ * Entrada unica do @mazotech/ui para o consumidor Tailwind 4:
+ *   @import "tailwindcss";
+ *   @import "@mazotech/ui/styles.css";
+ * Traz tokens, tema, camada shadcn e fontes, e manda o Tailwind escanear as
+ * classes usadas pelos componentes do pacote (sem isso rounded-full, bg-royal
+ * etc. nao sao geradas no CSS do consumidor).
+ */
+@import "./tokens.css";
+@import "./theme.css";
+@import "./shadcn.css";
+@import "./fonts.css";
+@source "./index.js";

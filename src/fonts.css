@@ -1,0 +1,16 @@
+/* Fontes do BRAND.md. Os TTF vivem em assets/fonts; o caminho e relativo a dist/. */
+@font-face {
+  font-family: "Inter Variable";
+  src: url("../assets/fonts/Inter-Variable.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono Variable";
+  src: url("../assets/fonts/JetBrainsMono-Variable.ttf") format("truetype");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}

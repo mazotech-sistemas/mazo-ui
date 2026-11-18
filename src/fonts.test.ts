@@ -12,3 +12,17 @@ describe("fontes", () => {
     expect(FONT_VARS.mono).toBe("--font-jet");
   });
 });
+describe("fontes carregam de verdade no consumidor", () => {
+  it("fonts.css declara @font-face das duas familias apontando para os ttf do pacote", async () => {
+    const { readFileSync } = await import("node:fs");
+    const css = readFileSync("src/fonts.css", "utf8");
+    expect(css).toMatch(/@font-face[^}]*font-family:\s*"Inter Variable"[^}]*assets\/fonts\/Inter-Variable\.ttf/s);
+    expect(css).toMatch(/@font-face[^}]*font-family:\s*"JetBrains Mono Variable"[^}]*assets\/fonts\/JetBrainsMono-Variable\.ttf/s);
+  });
+  it("tokens.css define --font-inter e --font-jet (sem isso font-display cai em fonte do sistema)", async () => {
+    const { readFileSync } = await import("node:fs");
+    const css = readFileSync("src/tokens.css", "utf8");
+    expect(css).toMatch(/--font-inter:\s*"Inter Variable"/);
+    expect(css).toMatch(/--font-jet:\s*"JetBrains Mono Variable"/);
+  });
+});

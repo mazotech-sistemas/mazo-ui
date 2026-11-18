@@ -3,15 +3,25 @@
   "version": "0.1.0",
   "type": "module",
   "exports": {
-    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" },
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
     "./tokens.css": "./dist/tokens.css",
     "./theme.css": "./dist/theme.css",
+    "./shadcn.css": "./dist/shadcn.css",
+    "./fonts.css": "./dist/fonts.css",
+    "./styles.css": "./dist/styles.css",
     "./tailwind-preset": "./dist/tailwind-preset.js",
     "./assets/*": "./assets/*"
   },
-  "files": ["dist", "assets"],
+  "files": [
+    "dist",
+    "assets"
+  ],
   "scripts": {
     "build": "tsup",
+    "prepare": "tsup",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:unit": "vitest run",
@@ -19,28 +29,34 @@
     "test:e2e": "playwright test",
     "test:system": "vitest run tests/system"
   },
-  "peerDependencies": { "react": "19", "react-dom": "19" },
+  "peerDependencies": {
+    "react": "19",
+    "react-dom": "19"
+  },
   "dependencies": {
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "tailwind-merge": "^2.5.4",
-    "class-variance-authority": "^0.7.1"
+    "tailwind-merge": "^2.5.4"
   },
   "devDependencies": {
-    "tsup": "^8.3.5",
-    "typescript": "^5.6.3",
-    "vitest": "^2.1.5",
-    "@testing-library/react": "^16.0.1",
-    "@testing-library/jest-dom": "^6.6.3",
-    "jsdom": "^25.0.1",
-    "react": "19.2.8",
-    "react-dom": "19.2.8",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "tailwindcss": "^4",
     "@cucumber/cucumber": "^11.0.0",
     "@cucumber/pretty-formatter": "^1.0.0",
     "@playwright/test": "^1.65.0",
+    "@tailwindcss/postcss": "^4.3.5",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.0.1",
+    "@testing-library/user-event": "^14.6.7",
+    "@types/node": "^22.20.5",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "jsdom": "^25.0.1",
     "playwright": "^1.65.0",
-    "@testing-library/user-event": "^14.6.7"
+    "postcss": "^8.5.33",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "tailwindcss": "^4",
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.5"
   }
 }

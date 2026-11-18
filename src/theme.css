@@ -1,6 +1,4 @@
-@import "tailwindcss";
-
-@theme inline {
+@theme {
   /* Cores BRAND.md (exatas) */
   --color-navy: #021D44;
   --color-royal: #0052FA;

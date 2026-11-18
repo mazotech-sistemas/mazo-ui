@@ -1,38 +1,61 @@
 # @mazotech/ui
 
-Design system compartilhado da Mazotech. Reúne os tokens de marca e os componentes React usados pelos produtos e sites do monorepo hub.
+Design system compartilhado da Mazotech. Reúne os tokens da marca e os componentes React que os frontends do hub usam.
 
-## O que é
-
-O pacote `@mazotech/ui` publica dois tipos de artefato:
-
-- Tokens de design (cores, tipografia, espaçamento, raio) expostos como CSS em `tokens.css` e `theme.css`.
-- Componentes React prontos para consumo, exportados a partir de `dist/index.js`.
-
-Os valores dos tokens vêm do `BRAND.md` verbatim. O `BRAND.md` é a fonte única da marca; este pacote só transcreve esses valores para CSS e TypeScript. Quando a marca mudar, o ajuste começa no `BRAND.md` e depois é refletido aqui, nunca o contrário.
+Os valores vêm do `kit/mazo-kit-comercial/BRAND.md`, que é a fonte única da marca. Quando a marca mudar, o ajuste começa no BRAND.md e depois é copiado para cá.
 
 ## Como consumir
 
-O consumo é por git mais hash, do mesmo jeito que o `mazo-core`. Você não instala de um registry npm público. No `package.json` do produto, aponte a dependência para o repositório e fixe um commit:
+O pacote não está em registry npm. Cada produto fixa um commit por git, igual ao pin do `mazo-core`:
 
 ```json
 {
   "dependencies": {
-    "@mazotech/ui": "git+https://github.com/mazotech-sistemas/mazo-ui.git#<hash-do-commit>"
+    "@mazotech/ui": "git+https://github.com/mazotech-sistemas/mazo-ui.git#<hash>"
   }
 }
 ```
 
-Fixar o hash garante build reprodutível. Para subir de versão, troque o hash pelo commit novo depois que ele estiver no remote.
+O script `prepare` roda o tsup na instalação, porque `dist/` não é versionado. Para subir de versão, troque o hash depois que o commit estiver no remote.
 
-## Regra de ouro: todo conteúdo vive neste repositório
+No CSS do produto (Tailwind 4), duas linhas bastam:
 
-Este pacote entra no hub como submódulo em `libs/mazo-ui`. O diretório `libs/mazo-ui` dentro do hub é só o ponteiro do submódulo. Todo código, token e componente mora aqui, no repositório `mazotech-sistemas/mazo-ui`.
+```css
+@import "tailwindcss";
+@import "@mazotech/ui/styles.css";
+```
 
-Nunca crie arquivo solto dentro de `libs/mazo-ui` no hub. Arquivo fora do submódulo quebra o modelo do monorepo e o gate (`bash tools/gates.sh`) reprova. O fluxo correto é: commitar e dar push aqui, e depois registrar o bump do ponteiro no hub.
+O `styles.css` traz tokens, tema, camada shadcn e fontes, e manda o Tailwind escanear as classes dos componentes do pacote. Sem ele, `rounded-full` e `bg-royal` não entram no CSS do consumidor. O teste `tests/system/consumo.test.ts` monta um projeto isolado para provar isso.
+
+Requisitos do consumidor: React 19 e Tailwind 4.
+
+## O que o pacote exporta
+
+- Componentes: `AppShell`, `Sidebar`, `Topbar`, `Logo`, `Card`, `Stat`, `Badge`, `Button`, `Input`, `Select`, `Table`. A assinatura de cada um está em `docs/components.md`.
+- CSS: `styles.css` (entrada única), `tokens.css`, `theme.css`, `shadcn.css`, `fonts.css`.
+- `tailwind-preset`: objeto `shadcnVars` com o remapeamento do shadcn para a marca.
+- `assets/`: lockup e símbolo em SVG, mais os TTF de Inter e JetBrains Mono.
+
+## Regras de marca que o código impõe
+
+- Base clara. O navy só aparece em bloco (`Card variant="hero"`). Não existe tema escuro.
+- O royal é o único acento de cada tela. O mint é raro e marca status ok ou pago.
+- A logo é obrigatória. `Sidebar` exige a prop `logo`, e o `Logo` mostra o símbolo mesmo com `nome=""`.
+- Raio: card 20px, input 12px, pill 9999px (só no botão primário).
+- Nenhum hex fora dos tokens. Use as classes (`bg-royal`, `text-ink`) e nunca o valor.
 
 ## Scripts
 
-- `npm run build`: gera o `dist/` com tsup (JS, tipos e CSS).
-- `npm test`: roda a suíte com vitest.
-- `npm run test:watch`: roda o vitest em modo watch.
+| Script | O que roda |
+|--------|-----------|
+| `npm run build` | tsup: ESM, tipos e cópia dos CSS para `dist/` |
+| `npm run test:unit` | vitest com Testing Library, um arquivo por componente |
+| `npm run test:bdd` | cucumber-js, lê o `dist/` publicado (rode o build antes) |
+| `npm run test:system` | vitest em `tests/system`, consome o pacote como um projeto externo |
+| `npm run test:e2e` | Playwright contra o `demo/`, que sobe sozinho na porta 3100 |
+
+Para conferir o visual, rode `npm --prefix demo run dev -- -p 3100` e abra `/ui`.
+
+## Onde o código mora
+
+O repositório é `mazotech-sistemas/mazo-ui`. No hub, `libs/mazo-ui` é só o ponteiro do submódulo. Todo arquivo novo nasce aqui. Arquivo versionado dentro de `libs/mazo-ui` pelo lado do hub reprova o gate. A ordem é: commit e push aqui, depois o bump do ponteiro no hub.

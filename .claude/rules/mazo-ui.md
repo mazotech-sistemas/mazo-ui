@@ -28,6 +28,7 @@ npm run build && npm run test:unit && npm run test:bdd && npm run test:system &&
 - Mais de um acento royal por tela, ou mint em decoração. Mint marca status.
 - `<main>` dentro do `AppShell`, ou `<tbody>` dentro da `Table`. Os dois já existem por dentro.
 - Copiar tokens para o `tailwind.config` de um consumidor. O consumidor importa `@mazotech/ui/styles.css`.
+- Pôr `--font-inter` ou `--font-jet` no `tokens.css` ou importar `fonts.css` dentro do `styles.css`. As fontes são opt-in: consumidor com `next/font` teria as variáveis sobrescritas e o Inter baixado em dobro.
 - Mexer em `libs/mazo-ui` pelo hub. Todo código nasce neste repositório.
 
 ## Arquivos que andam juntos

@@ -25,3 +25,7 @@ Then("ele nao declara {string}", function (trecho) {
 Then("ele importa {string}", function (arquivo) {
   if (!this.css.includes('@import "' + arquivo + '"')) throw new Error("nao importa " + arquivo);
 });
+
+Then("ele nao importa {string}", function (arquivo) {
+  if (this.css.includes('@import "' + arquivo + '"')) throw new Error("nao devia importar " + arquivo);
+});

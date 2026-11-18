@@ -25,14 +25,16 @@ No CSS do produto (Tailwind 4), duas linhas bastam:
 @import "@mazotech/ui/styles.css";
 ```
 
-O `styles.css` traz tokens, tema, camada shadcn e fontes, e manda o Tailwind escanear as classes dos componentes do pacote. Sem ele, `rounded-full` e `bg-royal` não entram no CSS do consumidor. O teste `tests/system/consumo.test.ts` monta um projeto isolado para provar isso.
+O `styles.css` traz tokens, tema e camada shadcn, e manda o Tailwind escanear as classes dos componentes do pacote. Sem ele, `rounded-full` e `bg-royal` não entram no CSS do consumidor. O teste `tests/system/consumo.test.ts` monta um projeto isolado para provar isso.
+
+As fontes são opt-in. Quem não carrega as próprias adiciona `@import "@mazotech/ui/fonts.css";`, que declara Inter e JetBrains Mono e define `--font-inter` e `--font-jet`. Quem usa `next/font` (como o mazo-site) não importa esse arquivo, senão o pacote sobrescreve as variáveis do Next e o Inter é baixado duas vezes.
 
 Requisitos do consumidor: React 19 e Tailwind 4.
 
 ## O que o pacote exporta
 
 - Componentes: `AppShell`, `Sidebar`, `Topbar`, `Logo`, `Card`, `Stat`, `Badge`, `Button`, `Input`, `Select`, `Table`. A assinatura de cada um está em `docs/components.md`.
-- CSS: `styles.css` (entrada única), `tokens.css`, `theme.css`, `shadcn.css`, `fonts.css`.
+- CSS: `styles.css` (entrada única, sem fontes), `tokens.css`, `theme.css`, `shadcn.css`, `fonts.css` (opt-in).
 - `tailwind-preset`: objeto `shadcnVars` com o remapeamento do shadcn para a marca.
 - `assets/`: lockup e símbolo em SVG, mais os TTF de Inter e JetBrains Mono.
 

@@ -11,9 +11,9 @@ Feature: Tokens da marca no CSS publicado
     Then ele declara "color-scheme: light"
     And ele nao declara "prefers-color-scheme: dark"
 
-  Scenario: A entrada unica reune tokens, tema, shadcn e fontes
+  Scenario: A entrada unica reune tokens, tema e shadcn, sem impor fontes
     Given o CSS publicado "styles.css"
     Then ele importa "./tokens.css"
     And ele importa "./theme.css"
     And ele importa "./shadcn.css"
-    And ele importa "./fonts.css"
+    And ele nao importa "./fonts.css"

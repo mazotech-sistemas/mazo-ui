@@ -1,4 +1,14 @@
-/* Fontes do BRAND.md. Os TTF vivem em assets/fonts; o caminho e relativo a dist/. */
+/*
+ * Opt-in. Fontes do BRAND.md para consumidor que NAO carrega as proprias.
+ * Quem usa next/font (ex.: mazo-site) nao importa este arquivo: o pacote
+ * sobrescreveria --font-inter e --font-jet e o site baixaria Inter em dobro.
+ * Os TTF vivem em assets/fonts; o caminho e relativo a dist/.
+ */
+:root {
+  --font-inter: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-jet: "JetBrains Mono Variable", ui-monospace, monospace;
+}
+
 @font-face {
   font-family: "Inter Variable";
   src: url("../assets/fonts/Inter-Variable.ttf") format("truetype");

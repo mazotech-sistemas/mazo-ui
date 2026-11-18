@@ -18,10 +18,6 @@
   --line: var(--color-line);
   --line-navy: rgba(255,255,255,.12);
 
-  /* Fontes (familias declaradas em fonts.css; next/font pode sobrescrever) */
-  --font-inter: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
-  --font-jet: "JetBrains Mono Variable", ui-monospace, monospace;
-
   /* Motion */
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --dur-fast: 140ms;

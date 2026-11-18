@@ -37,6 +37,8 @@ describe("consumo externo: utilitarias reais e remap shadcn", () => {
     const out = (await postcss([tailwind()]).process(`@import "@mazotech/ui/fonts.css";`, { from: undefined })).css;
     expect(out).toMatch(/font-family:\s*"Inter Variable"/);
     expect(out).toMatch(/font-family:\s*"JetBrains Mono Variable"/);
+    expect(out).toMatch(/--font-inter:\s*"Inter Variable"/);
+    expect(out).toMatch(/--font-jet:\s*"JetBrains Mono Variable"/);
   });
 });
 
@@ -59,8 +61,10 @@ describe("consumo externo: entrada unica styles.css", () => {
         expect(out, `classe ${cls} ausente`).toContain(`.${cls}`);
       }
       expect(out).toMatch(/--primary:\s*var\(--color-royal\)/);
-      expect(out).toMatch(/@font-face/);
-      expect(out).toMatch(/--font-inter:/);
+      // Fonte e opt-in: quem usa next/font nao pode ter --font-inter sobrescrito.
+      expect(out).not.toMatch(/@font-face/);
+      expect(out).not.toMatch(/--font-inter:/);
+      expect(out).not.toMatch(/--font-jet:/);
     } finally {
       rmSync(dir, { recursive: true, force: true });
     }

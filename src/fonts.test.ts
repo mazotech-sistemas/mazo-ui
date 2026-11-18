@@ -19,10 +19,16 @@ describe("fontes carregam de verdade no consumidor", () => {
     expect(css).toMatch(/@font-face[^}]*font-family:\s*"Inter Variable"[^}]*assets\/fonts\/Inter-Variable\.ttf/s);
     expect(css).toMatch(/@font-face[^}]*font-family:\s*"JetBrains Mono Variable"[^}]*assets\/fonts\/JetBrainsMono-Variable\.ttf/s);
   });
-  it("tokens.css define --font-inter e --font-jet (sem isso font-display cai em fonte do sistema)", async () => {
+  it("fonts.css define --font-inter e --font-jet (sem isso font-display cai em fonte do sistema)", async () => {
     const { readFileSync } = await import("node:fs");
-    const css = readFileSync("src/tokens.css", "utf8");
+    const css = readFileSync("src/fonts.css", "utf8");
     expect(css).toMatch(/--font-inter:\s*"Inter Variable"/);
     expect(css).toMatch(/--font-jet:\s*"JetBrains Mono Variable"/);
+  });
+  it("tokens.css NAO define as vars de fonte (consumidor next/font define as dele)", async () => {
+    const { readFileSync } = await import("node:fs");
+    const css = readFileSync("src/tokens.css", "utf8");
+    expect(css).not.toMatch(/--font-inter:/);
+    expect(css).not.toMatch(/--font-jet:/);
   });
 });
